@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import com.newco.apps.android.signin.model.SignInFailureReason
 import com.newco.apps.android.signin.model.SignInIntent
 import com.newco.apps.android.signin.model.SignInState
-import com.newco.apps.android.signin.view.form.SignInForm
+import com.newco.apps.android.signin.view.form.SignInFormHandler
 import com.newco.apps.android.signin.viewmodel.SignInViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.collect
@@ -25,7 +25,7 @@ internal class SignInViewHandler(
         get() = formState.value
 
     private val isLoadingState = mutableStateOf(INITIAL_IS_LOADING_VALUE)
-    private val formState = mutableStateOf(SignInForm(::onSignInButtonClicked))
+    private val formState = mutableStateOf(SignInFormHandler(::onSignInButtonClicked))
 
     init {
         initStateObserver()
