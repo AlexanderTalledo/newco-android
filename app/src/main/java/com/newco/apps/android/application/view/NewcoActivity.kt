@@ -1,4 +1,4 @@
-package com.newco.apps.android
+package com.newco.apps.android.application.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.newco.apps.android.ui.theme.NewcoTheme
 
-class MainActivity : ComponentActivity() {
+class NewcoActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -22,6 +23,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
 }
 
 @Composable
