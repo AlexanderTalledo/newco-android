@@ -7,7 +7,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import com.newco.apps.android.R
 
 @Composable
-internal fun ComposablePasswordTextField(
+internal fun ComposablePasswordFormTextField(
     label: String = stringResource(R.string.text_field_password_label),
     hint: String = stringResource(R.string.text_field_password_hint),
     value: String,

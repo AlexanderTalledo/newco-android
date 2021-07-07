@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.newco.apps.android.R
 import com.newco.apps.android.shared.framework.ui.composables.views.buttons.ComposableTextButton
 import com.newco.apps.android.shared.framework.ui.composables.views.textfields.ComposableEmailAddressFormTextField
-import com.newco.apps.android.shared.framework.ui.composables.views.textfields.ComposablePasswordTextField
+import com.newco.apps.android.shared.framework.ui.composables.views.textfields.ComposablePasswordFormTextField
 
 @Composable
 internal fun SignUpFormView(form: SignInForm) = with(form) {
@@ -34,7 +34,7 @@ internal fun SignUpFormView(form: SignInForm) = with(form) {
             ::onPasswordValueChange,
         )
 
-        SignInFormSignInButton(isSignInEnabledValue, ::onSignInButtonClicked)
+        SignInFormSignInButton(isSignInEnabledValue, onSignInButtonClicked)
     }
 }
 
@@ -69,7 +69,7 @@ private fun SignInFormPasswordTextField(
     onPasswordValueClear: () -> Unit,
     onPasswordValueChange: (String) -> Unit,
 ) {
-    ComposablePasswordTextField(
+    ComposablePasswordFormTextField(
         value = passwordValue,
         onValueClear = onPasswordValueClear,
         onValueChange = onPasswordValueChange,

@@ -7,7 +7,7 @@ private const val INITIAL_EMAIL_ADDRESS_VALUE = ""
 private const val INITIAL_PASSWORD_VALUE = ""
 private const val INITIAL_IS_CORRECTLY_FILLED_VALUE = false
 
-internal class SignInForm {
+internal class SignInForm(internal val onSignInButtonClicked: () -> Unit) {
 
     internal val emailAddressState = mutableStateOf(INITIAL_EMAIL_ADDRESS_VALUE)
     internal val passwordState = mutableStateOf(INITIAL_PASSWORD_VALUE)
@@ -58,10 +58,6 @@ internal class SignInForm {
 
     private inline fun <reified A : Any> update(state: MutableState<A>, newValue: A) {
         state.value = newValue
-    }
-
-    internal fun onSignInButtonClicked() {
-
     }
 
 }
