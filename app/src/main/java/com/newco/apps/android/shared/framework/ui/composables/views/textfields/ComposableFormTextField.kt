@@ -11,7 +11,10 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Clear
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.Dp
@@ -25,15 +28,17 @@ internal fun ComposableFormTextField(
     onValueChange: (String) -> Unit,
     onValueClear: () -> Unit,
     style: ComposableTextFieldStyle = composableFormTextFieldStyle(),
-    modifier: Modifier = Modifier.composableFormTextFieldModifier(),
+    modifier: Modifier? = null,
 ) {
+    val focusRequester = remember { FocusRequester() }
+
     ComposableTextField(
         value = value,
         onValueChange = onValueChange,
         labelContent = { ComposableFormTextFieldLabel(label) },
         placeholderContent = { ComposableFormTextFieldPlaceholder(hint) },
-        trailingIcon = { ComposableFormTextFieldTrailingIcon(value, onValueClear) },
-        modifier = modifier,
+        trailingIcon = { ComposableFormTextFieldTrailingIcon(value, focusRequester, onValueClear) },
+        modifier = modifier ?: Modifier.composableFormTextFieldModifier(focusRequester),
         maxLines = 1,
         singleLine = true,
         style = style,
@@ -51,9 +56,16 @@ private fun ComposableFormTextFieldPlaceholder(hint: String) {
 }
 
 @Composable
-private fun ComposableFormTextFieldTrailingIcon(value: String, onValueClear: () -> Unit) {
+private fun ComposableFormTextFieldTrailingIcon(
+    value: String,
+    focusRequester: FocusRequester,
+    onValueClear: () -> Unit,
+) {
     if (value.isEmpty()) return
-    IconButton(onClick = onValueClear) {
+    IconButton(onClick = {
+        focusRequester.requestFocus()
+        onValueClear()
+    }) {
         Icon(
             imageVector = Icons.Rounded.Clear,
             contentDescription = "Localized description",
@@ -61,9 +73,10 @@ private fun ComposableFormTextFieldTrailingIcon(value: String, onValueClear: () 
     }
 }
 
-private fun Modifier.composableFormTextFieldModifier() = this
+private fun Modifier.composableFormTextFieldModifier(focusRequester: FocusRequester) = this
     .fillMaxWidth()
     .wrapContentHeight()
+    .focusRequester(focusRequester)
 
 
 @Composable
