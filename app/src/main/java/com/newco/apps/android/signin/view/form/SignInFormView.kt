@@ -15,7 +15,7 @@ import com.newco.apps.android.shared.framework.ui.composables.views.textfields.C
 import com.newco.apps.android.shared.framework.ui.composables.views.textfields.ComposablePasswordFormTextField
 
 @Composable
-internal fun SignUpFormView(handler: SignInFormHandler) = with(handler) {
+internal fun SignInFormView(handler: SignInFormHandler) = with(handler) {
     val emailAddressValue by rememberSaveable { emailAddressState }
     val passwordValue by rememberSaveable { passwordState }
     val isSignInEnabledValue by rememberSaveable { isSignInEnabledState }

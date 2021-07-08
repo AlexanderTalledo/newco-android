@@ -4,10 +4,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import com.newco.apps.android.signin.view.form.SignUpFormView
+import com.newco.apps.android.signin.view.form.SignInFormView
+import com.newco.apps.android.signin.view.loading.SignInLoadingView
 import com.newco.apps.android.signin.viewmodel.SignInViewModel
 
 @Composable
@@ -17,8 +17,8 @@ internal fun SignInView(viewModel: SignInViewModel) {
 
     with(handler) {
         SignInContainer {
-            if (isLoading) Text("Loading...")
-            SignUpFormView(form)
+            SignInFormView(form)
+            if (isLoading) SignInLoadingView()
         }
     }
 }
