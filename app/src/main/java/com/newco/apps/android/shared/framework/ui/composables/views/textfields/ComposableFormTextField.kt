@@ -25,6 +25,7 @@ internal fun ComposableFormTextField(
     label: String,
     hint: String,
     value: String,
+    trailingIconContentDescription: String,
     onValueChange: (String) -> Unit,
     onValueClear: () -> Unit,
     style: ComposableTextFieldStyle = composableFormTextFieldStyle(),
@@ -37,7 +38,14 @@ internal fun ComposableFormTextField(
         onValueChange = onValueChange,
         labelContent = { ComposableFormTextFieldLabel(label) },
         placeholderContent = { ComposableFormTextFieldPlaceholder(hint) },
-        trailingIcon = { ComposableFormTextFieldTrailingIcon(value, focusRequester, onValueClear) },
+        trailingIcon = {
+            ComposableFormTextFieldTrailingIcon(
+                value,
+                trailingIconContentDescription,
+                focusRequester,
+                onValueClear
+            )
+        },
         modifier = modifier ?: Modifier.composableFormTextFieldModifier(focusRequester),
         maxLines = 1,
         singleLine = true,
@@ -58,6 +66,7 @@ private fun ComposableFormTextFieldPlaceholder(hint: String) {
 @Composable
 private fun ComposableFormTextFieldTrailingIcon(
     value: String,
+    contentDescription: String,
     focusRequester: FocusRequester,
     onValueClear: () -> Unit,
 ) {
@@ -68,7 +77,7 @@ private fun ComposableFormTextFieldTrailingIcon(
     }) {
         Icon(
             imageVector = Icons.Rounded.Clear,
-            contentDescription = "Localized description",
+            contentDescription = contentDescription,
         )
     }
 }

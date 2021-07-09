@@ -10,6 +10,7 @@ internal fun ComposableEmailAddressFormTextField(
     label: String = stringResource(R.string.text_field_email_address_label),
     hint: String = stringResource(R.string.text_field_email_address_hint),
     value: String,
+    trailingIconContentDescription: String = stringResource(R.string.text_field_email_address_trailing_icon_content_description),
     onValueClear: () -> Unit,
     onValueChange: (String) -> Unit,
 ) {
@@ -17,6 +18,7 @@ internal fun ComposableEmailAddressFormTextField(
         label = label,
         hint = hint,
         value = value,
+        trailingIconContentDescription = trailingIconContentDescription,
         onValueClear = onValueClear,
         onValueChange = onValueChange,
         style = composableEmailAddressFormTextFieldStyle(),

@@ -3,6 +3,8 @@
 
     <string name="text_field_email_address_label">Email Address</string>
     <string name="text_field_email_address_hint">e.g. username@newco.com</string>
+    <string name="text_field_email_address_trailing_icon_content_description">Clear email address field</string>
     <string name="text_field_password_label">Password</string>
     <string name="text_field_password_hint">e.g. Secr3t_P4ssw@rd!</string>
+    <string name="text_field_password_trailing_icon_content_description">Clear password field</string>
 </resources>

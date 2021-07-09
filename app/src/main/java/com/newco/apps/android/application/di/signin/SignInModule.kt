@@ -1,5 +1,6 @@
 package com.newco.apps.android.application.di.signin
 
+import com.newco.apps.android.signin.model.CqrsSignInRepository
 import com.newco.apps.android.signin.model.SignInRepository
 import dagger.Module
 import dagger.Provides
@@ -13,6 +14,6 @@ internal object SignInModule {
 
     @Provides
     @ViewModelScoped
-    internal fun provideSignInRepository() = SignInRepository()
+    internal fun provideSignInRepository(): SignInRepository = CqrsSignInRepository()
 
 }

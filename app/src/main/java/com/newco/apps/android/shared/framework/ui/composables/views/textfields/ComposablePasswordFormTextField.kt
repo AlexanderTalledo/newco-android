@@ -11,6 +11,7 @@ internal fun ComposablePasswordFormTextField(
     label: String = stringResource(R.string.text_field_password_label),
     hint: String = stringResource(R.string.text_field_password_hint),
     value: String,
+    trailingIconContentDescription: String = stringResource(R.string.text_field_password_trailing_icon_content_description),
     onValueClear: () -> Unit,
     onValueChange: (String) -> Unit,
 ) {
@@ -18,6 +19,7 @@ internal fun ComposablePasswordFormTextField(
         label = label,
         hint = hint,
         value = value,
+        trailingIconContentDescription = trailingIconContentDescription,
         onValueClear = onValueClear,
         onValueChange = onValueChange,
         style = composablePasswordFormTextFieldStyle(),
