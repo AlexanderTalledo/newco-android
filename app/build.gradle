@@ -49,10 +49,11 @@ android {
     }
 
     packagingOptions {
-        exclude "**/attach_hotspot_windows.dll"
-        exclude "META-INF/licenses/**"
-        exclude "META-INF/AL2.0"
-        exclude "META-INF/LGPL2.1"
+        exclude '**/attach_hotspot_windows.dll'
+        exclude 'META-INF/LICENSE*'
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/licenses/**'
     }
 
     testOptions {
@@ -61,6 +62,7 @@ android {
             returnDefaultValues = true
 
             all {
+                useJUnitPlatform()
                 testLogging {
                     events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
                 }
@@ -70,6 +72,8 @@ android {
 }
 
 dependencies {
+    implementation project(':authentication')
+    implementation project(':shared')
 
     implementation "androidx.appcompat:appcompat:$app_compat_version"
     implementation "androidx.activity:activity-compose:$activity_compose_version"
@@ -83,7 +87,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "com.google.android.material:material:$material_version"
 
-//    testImplementation "io.mockk:mockk:$mockk_version"
+    testImplementation project(path: ':shared', configuration: 'sharedTestDependencies')
+    testImplementation project(path: ':shared', configuration: 'testOutput')
 
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"

@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "Newco"
 include ':app'
 include ':authentication'
+include ':shared'
